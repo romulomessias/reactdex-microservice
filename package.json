@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "tsc && node dist/server.js",
+    "start": "node dist/server.js",
     "start:dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "postinstall": "npm run build",
     "test": "jest"
   },
   "author": "Romulo Messias",
