@@ -1,0 +1,1 @@
+to run this project just execute npm install and then rpm start. A documentation page is avaliable throw http://localhost:3000
