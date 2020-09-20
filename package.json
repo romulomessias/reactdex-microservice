@@ -9,23 +9,23 @@
   "author": "Romulo Messias",
   "license": "MIT License",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "inversify": "^5.0.1",
     "inversify-express-utils": "^6.3.2",
     "reflect-metadata": "^0.1.13",
     "swagger-express-ts": "^1.0.1",
-    "swagger-ui-dist": "^3.22.3"
+    "swagger-ui-dist": "^3.34.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.0",
-    "@types/jest": "^24.0.14",
-    "@types/node": "^12.0.8",
-    "jest": "^24.8.0",
+    "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.1",
+    "jest": "^26.4.2",
     "supertest": "^4.0.2",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.2"
+    "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
   }
 }
