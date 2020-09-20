@@ -1,5 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+// import pokemon from './resources/pokemon/pokemon.json';
 
 @Controller()
 export class AppController {
@@ -10,8 +13,9 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/hello')
-  getHello2(): string {
-    return this.appService.getHello() + "____2";
+  @Get('/pokemon')
+  getPokemon(): any {
+    const path = join(__dirname, '..', 'resources/pokemon/pokemon.json');
+    return readFileSync(path, 'utf8');
   }
 }
