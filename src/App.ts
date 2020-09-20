@@ -66,49 +66,12 @@ export default class App {
         }
       },
 
-      // Cross Origin Resource Sharing Options
-      cors: {
-        // origin handler
-        origin: function (origin, cb) {
-          // setup a white list
-          let wl = ["https://reactdex-microservice.herokuapp.com", "http://localhost:3000"];
-
-          if (wl.indexOf(origin) != -1) {
-            cb(null, true);
-          } else {
-            cb(new Error("invalid origin: " + origin), false);
-          }
-        },
-
-        optionsSuccessStatus: 200,
-      },
-    };
-    app.use(conf.originUndefined, cors(conf.cors));
-    app.use("/", express.static("swagger"));
-    app.use(
-      "/api-docs/swagger/assets",
-      express.static("node_modules/swagger-ui-dist")
-    );
-    app.use(bodyParser.json());
-    app.use(
-      swagger.express({
-        definition: {
-          info: {
-            title: "Simple API",
-            version: "1.0",
-          },
-        },
-      })
-    );
-
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
-  }
-
-  private static instance: App | undefined = undefined;
-  static start() {
-    if (this.instance == undefined) {
-      this.instance = new App();
+        this.instance.expressApp.listen(process.env.PORT || 3000, () => {
+          console.log(
+            "Express server listening on port " + process.env.PORT || 3000
+          );
+        });
+>>>>>>> parent of dbfd127... chore: updated port
     }
 
     this.instance.expressApp.listen(process.env.PORT || 3000, () => {
