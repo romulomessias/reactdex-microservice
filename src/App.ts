@@ -62,8 +62,10 @@ export default class App {
             this.instance = new App();
         }
 
-        this.instance.expressApp.listen(5000, () => {
-          console.log("Express server listening on port " + 5000);
+        this.instance.expressApp.listen(process.env.PORT || 3000, () => {
+          console.log(
+            "Express server listening on port " + process.env.PORT || 3000
+          );
         });
     }
 }
