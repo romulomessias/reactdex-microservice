@@ -8,6 +8,7 @@
         "emitDecoratorMetadata": true,
         "outDir": "./dist",
         "rootDir": "./src",
+        "skipDefaultLibCheck": true
     },
     "exclude": ["dist"]
 }
