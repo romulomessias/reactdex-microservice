@@ -27,9 +27,33 @@ export default class App {
       .inSingletonScope()
       .whenTargetNamed(UserController.TARGET_NAME);
 
-    const server = new InversifyExpressServer(container);
 
-    server.setConfig(this.configApp);
+
+      let app = express();
+      app.use(cors());
+      app.use("/", express.static("swagger"));
+      app.use(
+        "/api-docs/swagger/assets",
+        express.static("node_modules/swagger-ui-dist")
+      );
+      app.use(bodyParser.json());
+      app.use(
+        swagger.express({
+          definition: {
+            info: {
+              title: "Simple API",
+              version: "1.0",
+            },
+          },
+        })
+      );
+
+      app.use(bodyParser.json());
+      app.use(bodyParser.urlencoded({ extended: false }));
+
+    const server = new InversifyExpressServer(container, null, null, app);
+
+    // server.setConfig(this.configApp);
 
     server.setErrorConfig((app: any) => {
       app.use(
@@ -49,26 +73,7 @@ export default class App {
   }
 
   private configApp(app: Application) {
-    app.use(cors());
-    app.use("/", express.static("swagger"));
-    app.use(
-      "/api-docs/swagger/assets",
-      express.static("node_modules/swagger-ui-dist")
-    );
-    app.use(bodyParser.json());
-    app.use(
-      swagger.express({
-        definition: {
-          info: {
-            title: "Simple API",
-            version: "1.0",
-          },
-        },
-      })
-    );
-
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
+    
   }
 
   private static instance: App | undefined = undefined;
